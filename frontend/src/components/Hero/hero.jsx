@@ -1,4 +1,4 @@
-import "./Hero.css"
+import "./hero.css"
 import { FiSearch } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
