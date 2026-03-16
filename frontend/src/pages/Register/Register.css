@@ -1,0 +1,44 @@
+.register-container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:80vh;
+background:#f8f9fa;
+}
+
+.subtitle{
+color:#777;
+margin-bottom:25px;
+font-size:14px;
+}
+.register-card{
+background:white;
+padding:40px;
+border-radius:10px;
+margin:20px;
+width:380px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.register-card form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.register-card input{
+padding:12px;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+.register-card button{
+background:#ff6b6b;
+color:white;
+border:none;
+padding:12px;
+margin-bottom: 10px;
+border-radius:6px;
+cursor:pointer;
+}

@@ -1,0 +1,6 @@
+// src/setToken.js
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjU5NmIwMjg3OTE4YmY1OWQ5MDI4NSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzczNTk0NDk4LCJleHAiOjE3NzQxOTkyOTh9.UQmr0WM3LIreKbxBP0YqJr3rwq-G5DIOosR8U0VzWcE";
+
+localStorage.setItem("token", token);
+console.log("Token set in localStorage");
