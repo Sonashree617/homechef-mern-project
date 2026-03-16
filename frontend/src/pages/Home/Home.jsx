@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 import API from "../../api"
 import { FaSearch } from "react-icons/fa"
 import Hero from "../../components/Hero/hero"
-import Categories from "../../components/Categories/Categories"
+import Categories from "../../components/Categories/categories"
 import Chefs from "../../components/Chefs/Chefs"
 import FoodCard from "../../components/FoodCard/FoodCard"
 
