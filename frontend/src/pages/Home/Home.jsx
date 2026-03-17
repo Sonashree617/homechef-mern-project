@@ -62,14 +62,7 @@ function Home() {
          category: "Non-Veg",
          image: "https://images.unsplash.com/photo-1559847844-5315695dadae"
       },
-      {
-         _id: "69b77fd8a4de8e1cf97a0f77",
-         name: "Paneer Tikka",
-         chef: "Chef Meera",
-         price: 199,
-         rating: 4.6,
-         category: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"
-      },
+
       {
          _id: "69b77fd8a4de8e1cf97a0f78",
          name: "Chocolate Brownie",
