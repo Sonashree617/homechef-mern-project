@@ -15,16 +15,16 @@ const router = express.Router();
 // Create dish (chef only)
 router.post("/add", authMiddleware, upload.single("image"), addDish);
 
-// Get all dishes (users)
+// Get all dishes
 router.get("/", getAllDishes);
 
 // Get single dish
 router.get("/:id", getDishById);
 
-// Update dish (chef only)
+// Update dish
 router.put("/:id", authMiddleware, upload.single("image"), updateDish);
 
-// Delete dish (chef only)
+// Delete dish
 router.delete("/:id", authMiddleware, deleteDish);
 
 export default router;
