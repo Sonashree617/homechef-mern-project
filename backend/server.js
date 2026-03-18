@@ -29,6 +29,12 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/dishes", dishRoutes);
+import Dish from "./models/Dish.js";
+
+app.get("/test-dishes", async (req, res) => {
+  const dishes = await Dish.find();
+  res.json(dishes);
+});
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 
