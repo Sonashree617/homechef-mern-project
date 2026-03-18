@@ -31,9 +31,17 @@ app.use("/api/auth", authRoutes);
 app.use("/api/dishes", dishRoutes);
 import Dish from "./models/Dish.js";
 
-app.get("/test-dishes", async (req, res) => {
-  const dishes = await Dish.find();
-  res.json(dishes);
+app.get("/seed", async (req, res) => {
+
+  const dishes = [
+    { name: "Paneer Butter Masala", description: "Creamy paneer curry", price: 250 },
+    { name: "Veg Biryani", description: "Spicy rice dish", price: 200 },
+    { name: "Masala Dosa", description: "South Indian dosa", price: 120 }
+  ];
+
+  await Dish.insertMany(dishes);
+
+  res.send("Dishes added");
 });
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
