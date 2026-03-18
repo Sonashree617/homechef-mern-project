@@ -11,8 +11,6 @@ import dishRoutes from "./routes/dishRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
-import Dish from "./models/Dish.js";
-
 const app = express();
 
 // ---------------- DATABASE ----------------
@@ -31,31 +29,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/dishes", dishRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
-
-// ---------------- DEBUG ROUTE ----------------
-app.get("/test-dishes", async (req, res) => {
-  const dishes = await Dish.find();
-  res.json(dishes);
-});
-
-// ---------------- SEED ROUTE ----------------
-app.get("/seed", async (req, res) => {
-  try {
-
-    const dishes = [
-      { name: "Paneer Butter Masala", description: "Creamy paneer curry", price: 250, category: "Indian" },
-      { name: "Veg Biryani", description: "Spicy rice with vegetables", price: 200, category: "Rice" },
-      { name: "Masala Dosa", description: "South Indian dosa with potato filling", price: 120, category: "Breakfast" }
-    ];
-
-    await Dish.insertMany(dishes);
-
-    res.send("Seed data added successfully");
-
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
 
 // ---------------- TEST ROUTE ----------------
 app.get("/", (req, res) => {
