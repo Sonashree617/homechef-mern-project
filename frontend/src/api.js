@@ -1,8 +1,11 @@
 import axios from "axios";
 
-// API BASE URL FROM ENV
+// -------------------- BASE URL --------------------
+
+// ✅ Use environment variable (best practice)
+// Fallback to your Render URL
 const API = axios.create({
-  baseURL: "https://homechef-mern-project.onrender.com/api"
+  baseURL: import.meta.env.VITE_API_URL || "https://homechef-mern-project.onrender.com/api",
 });
 
 // -------------------- TOKEN HEADER --------------------
@@ -10,12 +13,23 @@ const API = axios.create({
 const getTokenHeader = () => {
   const token = localStorage.getItem("token");
 
-  if (!token) return {};
-
-  return {
-    Authorization: `Bearer ${token}`,
-  };
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
 };
+
+// -------------------- INTERCEPTOR (AUTO TOKEN) --------------------
+
+// 🔥 Automatically attach token to every request
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
 
 // -------------------- DISHES --------------------
 
@@ -26,45 +40,37 @@ export const getDishes = () => {
 // -------------------- CART --------------------
 
 export const addToCart = (item) => {
-  return API.post("/cart/add", item, { headers: getTokenHeader() });
+  return API.post("/cart/add", item);
 };
 
 export const getCart = () => {
-  return API.get("/cart", { headers: getTokenHeader() });
+  return API.get("/cart");
 };
 
 export const updateCartItem = (dishId, quantity) => {
-  return API.post(
-    "/cart/update",
-    { dishId, quantity },
-    { headers: getTokenHeader() }
-  );
+  return API.post("/cart/update", { dishId, quantity });
 };
 
 export const deleteCartItem = (dishId) => {
-  return API.post(
-    "/cart/remove",
-    { dishId },
-    { headers: getTokenHeader() }
-  );
+  return API.post("/cart/remove", { dishId });
 };
 
 export const clearCart = () => {
-  return API.post("/cart/clear", {}, { headers: getTokenHeader() });
+  return API.post("/cart/clear");
 };
 
 // -------------------- ORDERS --------------------
 
 export const createOrder = (amount) => {
-  return API.post("/orders/create", { amount }, { headers: getTokenHeader() });
+  return API.post("/orders/create", { amount });
 };
 
 export const verifyPayment = (data) => {
-  return API.post("/orders/verify", data, { headers: getTokenHeader() });
+  return API.post("/orders/verify", data);
 };
 
 export const getMyOrders = () => {
-  return API.get("/orders/my-orders", { headers: getTokenHeader() });
+  return API.get("/orders/my-orders");
 };
 
 export default API;
