@@ -1,88 +1,68 @@
-import { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import API from "../../api"
-import "./Login.css"
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import API from "../../api";
+import "./Login.css";
 
-function Login(){
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-const [email,setEmail] = useState("")
-const [password,setPassword] = useState("")
-const [loading,setLoading] = useState(false)
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-const handleLogin = async (e) => {
+    try {
+      setLoading(true);
 
-e.preventDefault()
+      const res = await API.post("/auth/login", { email, password });
 
-try{
+      localStorage.setItem("token", res.data.token);
 
-setLoading(true)
+      alert("Login successful 🎉");
+      navigate("/"); // Home page
+    } catch (err) {
+      console.log(err);
+      alert("Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const res = await API.post("/auth/login",{
-email,
-password
-})
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Welcome Back 👋</h2>
 
-localStorage.setItem("token", res.data.token)
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-alert("Login successful 🎉")
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-navigate("/")
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
-}catch(err){
-
-console.log(err)
-alert("Login failed")
-
-}finally{
-setLoading(false)
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </div>
+    </div>
+  );
 }
 
-}
-
-return(
-
-<div className="login-container">
-
-<div className="login-card">
-
-<h2>Welcome Back 👋</h2>
-
-<form onSubmit={handleLogin}>
-
-<input
-type="email"
-placeholder="Email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-required
-/>
-
-<input
-type="password"
-placeholder="Password"
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
-required
-/>
-
-<button type="submit">
-{loading ? "Logging in..." : "Login"}
-</button>
-
-</form>
-
-<p>
-Don't have an account? <Link to="/register">Register</Link>
-</p>
-
-</div>
-
-</div>
-
-)
-
-}
-
-export default Login
+export default Login;
