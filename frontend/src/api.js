@@ -1,12 +1,11 @@
 import axios from "axios";
 
-// API BASE URL FROM ENV
+// API BASE URL WITH /api PREFIX
 const API = axios.create({
-  baseURL: "https://homechef-mern-project.onrender.com"
+  baseURL: "https://homechef-mern-project.onrender.com/api" // <--- add /api
 });
 
 // -------------------- TOKEN HEADER --------------------
-
 const getTokenHeader = () => {
   const token = localStorage.getItem("token");
 
@@ -17,14 +16,21 @@ const getTokenHeader = () => {
   };
 };
 
-// -------------------- DISHES --------------------
+// -------------------- AUTH --------------------
+export const registerUser = (data) => {
+  return API.post("/auth/register", data);
+};
 
+export const loginUser = (data) => {
+  return API.post("/auth/login", data);
+};
+
+// -------------------- DISHES --------------------
 export const getDishes = () => {
   return API.get("/dishes");
 };
 
 // -------------------- CART --------------------
-
 export const addToCart = (item) => {
   return API.post("/cart/add", item, { headers: getTokenHeader() });
 };
@@ -54,7 +60,6 @@ export const clearCart = () => {
 };
 
 // -------------------- ORDERS --------------------
-
 export const createOrder = (amount) => {
   return API.post("/orders/create", { amount }, { headers: getTokenHeader() });
 };
