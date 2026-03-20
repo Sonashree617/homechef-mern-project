@@ -18,7 +18,7 @@ function Home() {
 
    const demoDishes = [
       {
-         _id: "69b77e5fa4de8e1cf97a0f6c",
+         _id: "69bd3973ae24f54d2b519cb2",
          name: "Chicken Biryani",
          chef: "Chef Arjun",
          price: 299,
@@ -27,7 +27,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800"
       },
       {
-         _id: "69b77e5fa4de8e1cf97a0f6d",
+         _id: "69bd3973ae24f54d2b519cb3",
          name: "Paneer Butter Masala",
          chef: "Chef Meera",
          price: 259,
@@ -36,7 +36,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7"
       },
       {
-         _id: "69b77e5fa4de8e1cf97a0f6e",
+         _id: "69bd3973ae24f54d2b519cb4",
          name: "Chicken Burger",
          chef: "Chef Kevin",
          price: 199,
@@ -45,7 +45,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1550547660-d9450f859349"
       },
       {
-         _id: "69b77e5fa4de8e1cf97a0f6f",
+         _id: "69bd3973ae24f54d2b519cb5",
          name: "Veg Pasta",
          chef: "Chef Luca",
          price: 279,
@@ -54,7 +54,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800"
       },
       {
-         _id: "69b77e5fa4de8e1cf97a0f70",
+         _id: "69bd3973ae24f54d2b519cb6",
          name: "Grilled Fish",
          chef: "Chef Arjun",
          price: 349,
@@ -64,7 +64,7 @@ function Home() {
       },
 
       {
-         _id: "69b77fd8a4de8e1cf97a0f78",
+         _id: "69bd3973ae24f54d2b519cb7",
          name: "Chocolate Brownie",
          chef: "Chef Kevin",
          price: 149,
@@ -73,7 +73,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c"
       },
       {
-         _id: "69b77fd8a4de8e1cf97a0f79",
+         _id: "69bd3973ae24f54d2b519cb8",
          name: "Fruit Salad",
          chef: "Chef Luca",
          price: 129,
@@ -82,7 +82,7 @@ function Home() {
          image: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea"
       },
       {
-         _id: "69b77fd8a4de8e1cf97a0f7b",
+         _id: "69bd3973ae24f54d2b519cb9",
          name: "Veg Sandwich",
          chef: "Chef Meera",
          price: 159,

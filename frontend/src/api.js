@@ -1,10 +1,12 @@
 import axios from "axios";
 
+// API BASE URL FROM ENV
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: process.env.REACT_APP_API_URL
 });
 
-// JWT TOKEN
+// -------------------- TOKEN HEADER --------------------
+
 const getTokenHeader = () => {
   const token = localStorage.getItem("token");
 
