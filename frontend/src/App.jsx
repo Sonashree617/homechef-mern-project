@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }) => {
 // ---------------- Public Route ----------------
 const PublicRoute = ({ children }) => {
   const token = localStorage.getItem("token");
-  return token ? <Navigate to="/" /> : children;
+  return token ? <Navigate to="/home" /> : children;
 };
 
 function App() {
@@ -26,9 +26,20 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* Home page - protected */}
+
+        {/* Root: decide where to go */}
         <Route
           path="/"
+          element={
+            localStorage.getItem("token")
+              ? <Navigate to="/home" />
+              : <Navigate to="/login" />
+          }
+        />
+
+        {/* Home page - protected */}
+        <Route
+          path="/home"
           element={
             <PrivateRoute>
               <Home />
@@ -76,8 +87,9 @@ function App() {
           }
         />
 
-        {/* Catch-all route - redirect unknown paths to home or login */}
+        {/* Catch-all route */}
         <Route path="*" element={<Navigate to="/" />} />
+
       </Routes>
 
       <Footer />
