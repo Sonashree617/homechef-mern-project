@@ -19,12 +19,11 @@ e.preventDefault()
 try{
 
 setLoading(true)
-
-await API.post("/auth/register",{
-name,
-email,
-password
-})
+await API.post("/api/auth/register", {
+  name,
+  email,
+  password
+});
 
 alert("Registration successful 🎉 Please login")
 
