@@ -21,7 +21,10 @@ function Login() {
       localStorage.setItem("token", res.data.token);
 
       alert("Login successful 🎉");
-      navigate("/"); // Home page
+
+      // ✅ go directly to home
+      navigate("/home");
+
     } catch (err) {
       console.log(err);
       alert("Login failed. Please check your credentials.");

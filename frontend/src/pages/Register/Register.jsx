@@ -6,7 +6,7 @@ import "./Register.css";
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); // <-- added
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ function Register() {
 
       alert("Registration successful 🎉 Please login");
       navigate("/login");
+
     } catch (err) {
       console.log(err);
       alert("Registration failed. Please check your details and try again.");
