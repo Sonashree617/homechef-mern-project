@@ -6,7 +6,6 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "./setToken.js";
 
 // ---------------- Private Route ----------------
 const PrivateRoute = ({ children }) => {
