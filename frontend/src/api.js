@@ -2,7 +2,7 @@ import axios from "axios";
 
 // API BASE URL FROM ENV
 const API = axios.create({
-  baseURL: "https://homechef-mern-project.onrender.com/api"
+  baseURL: "https://homechef-mern-project.onrender.com"
 });
 
 // -------------------- TOKEN HEADER --------------------
