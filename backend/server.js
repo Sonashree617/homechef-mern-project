@@ -18,14 +18,12 @@ connectDB();
 
 // ---------------- MIDDLEWARE ----------------
 
-// 🔥 FINAL CORS FIX
+// ✅ CORS (this alone is enough)
 app.use(cors({
   origin: "*"
 }));
 
-// 🔥 HANDLE PREFLIGHT (VERY IMPORTANT)
-app.options("*", cors());
-
+// ✅ JSON parser
 app.use(express.json());
 
 // ---------------- ROUTES ----------------
