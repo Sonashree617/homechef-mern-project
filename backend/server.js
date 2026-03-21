@@ -17,23 +17,14 @@ const app = express();
 connectDB();
 
 // ---------------- MIDDLEWARE ----------------
-const allowedOrigins = [
-  "https://homechef-mern-project-k8qc-95fs2lmug-sonas-projects-9fce1112.vercel.app",
-  "https://homechef-mern-project-k8qc-dss9v7v6i-sonas-projects-9fce1112.vercel.app" // ✅ ADD THIS (your current URL)
-];
 
+// 🔥 FINAL CORS FIX
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS policy: This origin is not allowed"));
-    }
-  },
-  credentials: true
+  origin: "*"
 }));
+
+// 🔥 HANDLE PREFLIGHT (VERY IMPORTANT)
+app.options("*", cors());
 
 app.use(express.json());
 
